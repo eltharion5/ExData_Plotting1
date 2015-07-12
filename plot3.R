@@ -13,12 +13,12 @@ data<- data[data$Date >= "2007-02-01" & data$Date <= "2007-02-02", ]
 Date_time <- paste(as.Date(data$Date), data$Time)
 data$Date_time <-  strptime(Date_time, "%Y-%m-%d %H:%M:%S")
 ##ploting data
+png("plot3.png", width=480, height=480)
 with(data,{plot(Date_time,Sub_metering_1,type="l",ylab="Energy sub metering",xlab="")
                lines(Date_time,Sub_metering_2,col='Red')
                lines(Date_time,Sub_metering_3,col='Blue')})
-legend("topright",lwd = 2, col = c("black", "red","blue"),legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+legend("topright",lty=1, lwd=2.5, col = c("black", "red","blue"),legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
 
 ##saving a png copy
 
-dev.copy(png, file = "plot3.png", height=480, width=480) 
 dev.off()
